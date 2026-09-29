@@ -15,8 +15,8 @@ export default function Footer({ onNavigate }: FooterProps) {
               <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-gradient-to-br from-amber-400 to-amber-600">
                 <Zap className="h-5 w-5 text-slate-900" strokeWidth={2.5} />
               </div>
-              <span className="text-lg font-bold text-white">
-                Volt<span className="text-amber-400">Edge</span>
+              <span className="text-4 font-bold text-white">
+                Chohan<span className="text-amber-400"> Electric <span className='text-white'>Store</span></span>
               </span>
             </div>
             <p className="text-sm leading-relaxed">
@@ -65,19 +65,19 @@ export default function Footer({ onNavigate }: FooterProps) {
             <ul className="space-y-3 text-sm">
               <li className="flex items-center gap-3">
                 <Phone className="h-4 w-4 flex-shrink-0 text-amber-400" />
-                <span>(555) 123-4567</span>
+                <span>(+92) 3110649235</span>
               </li>
               <li className="flex items-center gap-3">
                 <Mail className="h-4 w-4 flex-shrink-0 text-amber-400" />
-                <span>info@voltedge.com</span>
+                <span>lpshadow47@gmail.com</span>
               </li>
               <li className="flex items-center gap-3">
                 <MapPin className="h-4 w-4 flex-shrink-0 text-amber-400" />
-                <span>124 Circuit Ave, Springfield</span>
+                <span>BHALWAL ROAD NEAR DIN COLONY SARGODHA, PAKISTAN</span>
               </li>
               <li className="flex items-center gap-3">
                 <Clock className="h-4 w-4 flex-shrink-0 text-amber-400" />
-                <span>Mon–Sat: 7am – 8pm</span>
+                <span>Mon–Sun: 7am – 10pm</span>
               </li>
             </ul>
           </div>
