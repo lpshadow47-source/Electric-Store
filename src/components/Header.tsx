@@ -40,7 +40,7 @@ export default function Header({ currentPage, onNavigate }: HeaderProps) {
             <Zap className="h-5 w-5 text-slate-900" strokeWidth={2.5} />
           </div>
           <span className="text-lg font-bold tracking-tight text-white">
-            Chohan<span className="text-amber-400">Electric</span>
+            Chohan<span className="text-amber-400"> Electric <span className='text-white'>Store</span></span>
           </span>
         </button>
 
