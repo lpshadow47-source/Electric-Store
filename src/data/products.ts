@@ -10,6 +10,10 @@ export interface Product {
   badge?: string;
 }
 
+
+
+
+
 export const products: Product[] = [
   {
     id: 'p1',

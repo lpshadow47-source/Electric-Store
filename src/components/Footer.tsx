@@ -1,10 +1,7 @@
 import { Zap, Phone, Mail, MapPin, Facebook, Twitter, Instagram, Clock } from 'lucide-react';
+import {Link} from 'react-router-dom'
 
-interface FooterProps {
-  onNavigate: (page: 'home' | 'store') => void;
-}
-
-export default function Footer({ onNavigate }: FooterProps) {
+export default function Footer() {
   return (
     <footer id="contact" className="bg-slate-950 text-gray-400">
       <div className="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
@@ -40,8 +37,10 @@ export default function Footer({ onNavigate }: FooterProps) {
           <div>
             <h3 className="mb-4 text-sm font-semibold uppercase tracking-wider text-white">Quick Links</h3>
             <ul className="space-y-2 text-sm">
-              <li><button onClick={() => onNavigate('home')} className="transition-colors hover:text-amber-400">Home</button></li>
-              <li><button onClick={() => onNavigate('store')} className="transition-colors hover:text-amber-400">Shop Products</button></li>
+              <li><Link to='/home'  className="transition-colors hover:text-amber-400">Home</Link></li>
+              {/* onClick={() => onNavigate('home')} */}
+              <li><Link to='/store'  className="transition-colors hover:text-amber-400">Shop Products</Link></li>
+              {/* onClick={() => onNavigate('store')} */}
               <li><a href="#services" className="transition-colors hover:text-amber-400">Our Services</a></li>
               <li><a href="#booking" className="transition-colors hover:text-amber-400">Book a Service</a></li>
             </ul>

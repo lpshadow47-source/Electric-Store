@@ -23,7 +23,7 @@ export const services: Service[] = [
     icon: Home,
     title: 'Residential Wiring',
     description: 'Complete home electrical wiring, from new installations to rewiring older properties safely and up to code.',
-    price: 'From $120',
+    price: 'From 120 PKR',
     features: ['Full house wiring', 'Safety inspection', 'Switchboard upgrade', 'Certificate of compliance'],
   },
   {
@@ -31,7 +31,7 @@ export const services: Service[] = [
     icon: Factory,
     title: 'Commercial Electrical',
     description: 'Electrical solutions for offices, retail spaces, and industrial facilities with minimal downtime.',
-    price: 'From $250',
+    price: 'From 250 PKR',
     features: ['3-phase power', 'Emergency lighting', 'Data cabling', 'Maintenance contracts'],
   },
   {
@@ -39,7 +39,7 @@ export const services: Service[] = [
     icon: Lightbulb,
     title: 'Lighting Installation',
     description: 'Indoor and outdoor lighting design and installation, including smart lighting systems and chandeliers.',
-    price: 'From $80',
+    price: 'From 80 PKR',
     features: ['LED upgrades', 'Smart lighting', 'Outdoor & garden', 'Chandelier fitting'],
   },
   {
@@ -47,7 +47,7 @@ export const services: Service[] = [
     icon: ShieldCheck,
     title: 'Safety Inspection',
     description: 'Comprehensive electrical safety audits to ensure your property meets all current regulations.',
-    price: 'From $99',
+    price: 'From 99 PKR',
     features: ['Full audit report', 'Fault detection', 'RCD testing', 'Compliance certificate'],
   },
   {
@@ -55,7 +55,7 @@ export const services: Service[] = [
     icon: Zap,
     title: 'Emergency Callout',
     description: '24/7 emergency electrical service for power outages, faults, and dangerous situations.',
-    price: 'From $150',
+    price: 'From 150 PKR',
     features: ['24/7 availability', 'Fast response', 'Fault repair', 'Power restoration'],
   },
   {
@@ -63,7 +63,7 @@ export const services: Service[] = [
     icon: Wrench,
     title: 'Repairs & Maintenance',
     description: 'Ongoing maintenance and repair services for sockets, switches, fans, and all electrical fixtures.',
-    price: 'From $65',
+    price: 'From 65 PKR',
     features: ['Socket repair', 'Switch replacement', 'Fan servicing', 'General troubleshooting'],
   },
 ];

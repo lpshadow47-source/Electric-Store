@@ -11,13 +11,10 @@ import {
   Zap,
   type LucideIcon,
 } from 'lucide-react';
+import {Link} from 'react-router-dom'
 import { services, type Service } from '@/data/services';
 import { products } from '@/data/products';
-import { useCart } from '@/context/CartContext';
-
-interface HomeProps {
-  onNavigate: (page: 'home' | 'store') => void;
-}
+// import { useCart } from '@/context/CartContext';
 
 const stats: { icon: LucideIcon; value: string; label: string }[] = [
   { icon: Users, value: '5,000+', label: 'Happy Customers' },
@@ -32,8 +29,10 @@ const testimonials = [
   { name: 'Emily Rodriguez', role: 'Property Manager', text: 'I manage 12 properties and VoltEdge is my go-to for all electrical work. Reliable and fairly priced.', rating: 5 },
 ];
 
-export default function Home({ onNavigate }: HomeProps) {
-  const { addToCart } = useCart();
+export default function Home() {
+
+  // const { addToCart } = useCart();
+
   const [booking, setBooking] = useState({
     name: '',
     email: '',
@@ -58,7 +57,7 @@ export default function Home({ onNavigate }: HomeProps) {
   return (
     <div>
       {/* Hero */}
-      <section className="relative flex min-h-screen items-center overflow-hidden pt-16">
+      <section className="relative flex min-h-[120vh] items-center overflow-hidden pt-16">
         <div className="absolute inset-0">
           <img
             src="https://images.pexels.com/photos/27928762/pexels-photo-27928762.jpeg?auto=compress&cs=tinysrgb&h=650&w=940"
@@ -85,7 +84,7 @@ export default function Home({ onNavigate }: HomeProps) {
               From residential wiring to commercial installations, we deliver safe, reliable, and
               affordable electrical services. Plus, shop quality electrical products in our store.
             </p>
-            <div className="mt-8 flex flex-wrap gap-4">
+            <div className="mb-20 mt-8 flex flex-wrap gap-4">
               <a
                 href="#booking"
                 className="inline-flex items-center gap-2 rounded-lg bg-gradient-to-r from-amber-400 to-amber-600 px-6 py-3 font-semibold text-slate-900 shadow-lg shadow-amber-500/30 transition-all hover:shadow-amber-500/50 hover:brightness-110"
@@ -93,13 +92,13 @@ export default function Home({ onNavigate }: HomeProps) {
                 Book a Service
                 <ArrowRight className="h-5 w-5" />
               </a>
-              <button
-                onClick={() => onNavigate('store')}
+              <Link to='/store'
+                // onClick={() => onNavigate('store')}
                 className="inline-flex items-center gap-2 rounded-lg border border-white/20 bg-white/5 px-6 py-3 font-semibold text-white backdrop-blur transition-all hover:bg-white/10"
               >
                 Visit Our Store
                 <ArrowRight className="h-5 w-5" />
-              </button>
+              </Link>
             </div>
           </div>
         </div>
@@ -221,13 +220,13 @@ export default function Home({ onNavigate }: HomeProps) {
               <h2 className="mt-2 text-3xl font-bold text-slate-900 sm:text-4xl">Featured Products</h2>
               <p className="mt-2 text-gray-600">Quality electrical products from trusted brands</p>
             </div>
-            <button
-              onClick={() => onNavigate('store')}
+            <Link to='/store'
+              // onClick={() => onNavigate('store')}
               className="inline-flex items-center gap-2 rounded-lg bg-slate-900 px-5 py-2.5 font-semibold text-white transition-all hover:bg-slate-800"
             >
               View All Products
               <ArrowRight className="h-4 w-4" />
-            </button>
+            </Link>
           </div>
 
           <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
@@ -257,13 +256,13 @@ export default function Home({ onNavigate }: HomeProps) {
                   <h3 className="mb-2 line-clamp-1 font-semibold text-slate-900">{product.name}</h3>
                   <div className="flex items-center justify-between">
                     <div className="flex items-baseline gap-2">
-                      <span className="text-lg font-bold text-slate-900">${product.price}</span>
+                      <span className="text-lg font-bold text-slate-900">{product.price}PKR</span>
                       {product.oldPrice && (
-                        <span className="text-sm text-gray-400 line-through">${product.oldPrice}</span>
+                        <span className="text-sm text-gray-400 line-through">{product.oldPrice}PKR</span>
                       )}
                     </div>
                     <button
-                      onClick={() => addToCart(product)}
+                      // onClick={() => addToCart(product)}
                       className="rounded-lg bg-slate-900 px-3 py-1.5 text-xs font-semibold text-white transition-all hover:bg-amber-500 hover:text-slate-900"
                     >
                       Add to Cart

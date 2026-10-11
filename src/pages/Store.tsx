@@ -1,20 +1,62 @@
-import { useState, useMemo } from 'react';
+import { useEffect, useState, useMemo } from 'react';
 import { Star, Search, SlidersHorizontal, ShoppingBag, ArrowLeft, Plus } from 'lucide-react';
-import { products, productCategories, type Product } from '@/data/products';
-import { useCart } from '@/context/CartContext';
-
-interface StoreProps {
-  onNavigate: (page: 'home' | 'store') => void;
+// import { useCart } from '@/context/CartContext';
+import { Link } from 'react-router-dom';
+interface Product {
+  id: number;
+  name: string;
+  category: 'Lights' | 'Sockets' | 'Buttons' | 'Holders' | 'Fans' | 'Accessories';
+  price: number;
+  oldPrice?: number;
+  rating: number;
+  image: string;
+  description: string;
+  badge?: string;
 }
+
+interface ApiResponse {
+  status: boolean;
+  products: Product[];
+}
+
 
 type SortOption = 'featured' | 'price-low' | 'price-high' | 'rating';
 
-export default function Store({ onNavigate }: StoreProps) {
-  const { addToCart } = useCart();
+export default function Store() {
+  // const { addToCart } = useCart();
   const [activeCategory, setActiveCategory] = useState<string>('All');
   const [searchQuery, setSearchQuery] = useState('');
   const [sortBy, setSortBy] = useState<SortOption>('featured');
   const [priceRange, setPriceRange] = useState<number>(250);
+
+  const [products, setData] = useState<Product[]>([]);
+  const [productCategories, setCategories] = useState<string[]>([]);
+
+  // function onNavigate(path){
+
+  // }
+
+
+
+  // API Call & Categories extraction directly in useEffect
+  useEffect(() => {
+    const apiCall = async () => {
+      try {
+        const request = await fetch(`http://localhost:1189/user/products`);
+        const response: ApiResponse = await request.json();
+        if (response.status && response.products) {
+          setData(response.products);
+
+          // Extract Unique Categories here
+          const categories = ['All', ...new Set(response.products.map((p) => p.category))];
+          setCategories(categories);
+        }
+      } catch (err) {
+        console.error('API Fetching Error:', err);
+      }
+    };
+    apiCall();
+  }, []);
 
   const filteredProducts = useMemo(() => {
     let result = products.filter((p) => p.price <= priceRange);
@@ -46,20 +88,20 @@ export default function Store({ onNavigate }: StoreProps) {
     }
 
     return result;
-  }, [activeCategory, searchQuery, sortBy, priceRange]);
+  }, [products, activeCategory, searchQuery, sortBy, priceRange]);
 
   return (
     <div className="min-h-screen bg-slate-50 pt-16">
       {/* Store hero */}
       <section className="bg-slate-900 py-12">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <button
-            onClick={() => onNavigate('home')}
+          <Link to='/home'
+            // onClick={() => onNavigate('home')}
             className="mb-4 inline-flex items-center gap-2 text-sm font-medium text-gray-400 transition-colors hover:text-amber-400"
           >
             <ArrowLeft className="h-4 w-4" />
             Back to Home
-          </button>
+          </Link>
           <div className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
             <div>
               <h1 className="text-3xl font-bold text-white sm:text-4xl">
@@ -130,8 +172,8 @@ export default function Store({ onNavigate }: StoreProps) {
                 className="w-full accent-amber-500"
               />
               <div className="mt-1 flex justify-between text-xs text-gray-500">
-                <span>$10</span>
-                <span className="font-semibold text-slate-900">${priceRange}</span>
+                <span>10 PKR</span>
+                <span className="font-semibold text-slate-900">{priceRange} PKR</span>
               </div>
             </div>
 
@@ -210,13 +252,13 @@ export default function Store({ onNavigate }: StoreProps) {
                       <p className="mb-3 line-clamp-2 text-sm text-gray-500">{product.description}</p>
                       <div className="flex items-center justify-between">
                         <div className="flex items-baseline gap-2">
-                          <span className="text-xl font-bold text-slate-900">${product.price}</span>
+                          <span className="text-xl font-bold text-slate-900">{product.price} <span className='text-[12px]'>PKR</span> </span>
                           {product.oldPrice && (
-                            <span className="text-sm text-gray-400 line-through">${product.oldPrice}</span>
+                            <span className="text-sm text-gray-400 line-through">{product.oldPrice} PKR</span>
                           )}
                         </div>
                         <button
-                          onClick={() => addToCart(product)}
+                          // onClick={() => addToCart(product)} 
                           className="flex items-center gap-1.5 rounded-lg bg-slate-900 px-3.5 py-2 text-sm font-semibold text-white transition-all hover:bg-amber-500 hover:text-slate-900"
                         >
                           <Plus className="h-4 w-4" />
@@ -239,12 +281,12 @@ export default function Store({ onNavigate }: StoreProps) {
             <h3 className="text-xl font-bold text-white">Need help installing your purchase?</h3>
             <p className="mt-1 text-gray-400">Our certified electricians can install any product from our store.</p>
           </div>
-          <button
-            onClick={() => onNavigate('home')}
+          <Link to='/home'
+            // onClick={() => onNavigate('home')}
             className="rounded-lg bg-gradient-to-r from-amber-400 to-amber-600 px-6 py-3 font-semibold text-slate-900 shadow-lg shadow-amber-500/30 transition-all hover:brightness-110"
           >
             Book Installation Service
-          </button>
+          </Link>
         </div>
       </section>
     </div>
