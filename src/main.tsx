@@ -26,10 +26,10 @@ const Routes = createBrowserRouter(
       path: '/',
       element: <Home />
     },
-    {
-      path: '*',
-      element: <NotFound />,
-    },
+    // {
+    //   path: '*',
+    //   element: <NotFound />,
+    // },
 
   ]
 
