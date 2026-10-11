@@ -2,6 +2,8 @@ import { useEffect, useState, useMemo } from 'react';
 import { Star, Search, SlidersHorizontal, ShoppingBag, ArrowLeft, Plus } from 'lucide-react';
 // import { useCart } from '@/context/CartContext';
 import { Link } from 'react-router-dom';
+import Header from '@/components/Header';
+import Footer from '@/components/Footer';
 interface Product {
   id: number;
   name: string;
@@ -92,6 +94,7 @@ export default function Store() {
 
   return (
     <div className="min-h-screen bg-slate-50 pt-16">
+      <Header/>
       {/* Store hero */}
       <section className="bg-slate-900 py-12">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
@@ -289,6 +292,7 @@ export default function Store() {
           </Link>
         </div>
       </section>
+      <Footer/>
     </div>
   );
 }

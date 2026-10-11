@@ -12,11 +12,12 @@ const Routes = createBrowserRouter(
     {
       element: <ProtectedRoutes />,
       children: [
-        {
-          path: '/store',
-          element: <Store />
-        }
+
       ]
+    },
+    {
+      path: '/store',
+      element: <Store />
     },
     {
       path: '/signin',
